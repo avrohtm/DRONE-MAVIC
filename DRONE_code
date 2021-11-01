@@ -1,0 +1,49 @@
+from controller import Robot, InertialUnit
+from controller import Motor, Gyro
+from controller import Compass GPS
+import math
+import numpy as np
+
+#import params as perans
+
+robot = Robot ()
+M_PI = np.pi
+k_pitch_p = 30.0
+k_roll_p = 50.0
+k_vertical_p = 3.0
+
+k_vertical_thrust = 68.5
+k_vertical_offset = 0.6
+
+timestep = int (robot.getBasicTimeStep())
+
+ini = InertialUnit("inertial unit ")
+imu.enable(timestep)
+pusula = compass("compas")
+gyro  = Gyro("gyro")
+pusula.enable(timestep)
+gyro.enable(timestep)
+gps = GPS("gps")
+
+leftmotorf = robot.getMotor ("front left propeller")  
+rightmotorf = robot.getMotor("front right propeller") 
+backright = robot.getMotor ("rear right propeller")  
+backleft = robot.getMotor ("rear left propeller") 
+
+leftmotorf.setPosition (float("inf")) 
+rightmotorf.setPosition(float("inf"))
+backright.setPosition (float("inf"))
+backleft.setPosition (float (inf"))
+
+leftmotorf.setVelocity(1.8)
+backleft.setVelocity(1.8)
+rightmotorf.setVelocity(1.6)
+backright.setVelocity(1.0)
+
+while robot.step(tinestep) - -1:
+	roll = imu.getRollPitchYaw()[0]tM_PI/2.0
+	pitch = imu.getRollPitchYaw()[1]
+	rakim = gps.getValue()[1]
+	roll_hiz - gyro.getValue()[0]
+	pitch_hiz = gyro.getValue()[1]
+	print("x ekseni : {0} - y ekseni : {1}").format(roll,pitch))
